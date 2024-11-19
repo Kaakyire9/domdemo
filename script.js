@@ -20,7 +20,9 @@ function addToList(e){
     // add event listener to delete item
     newListElement.addEventListener("click", removeFromList);
 
-    newListElement.textContent = listTextInput.value;
+    // create new button
+    // add event
+    newListElement.innerHTML = listTextInput.value + " <button onclick='removeFromList'>Delete</button>";
 
     // clear text box
     listTextInput.value = "";
@@ -39,9 +41,9 @@ function removeFromList(e){
     // confirm we want to delete
     if(confirm("Are you sure you want to delete this item?")){
     // delete item
-    const listItem = e.target;
+    const listItem = e.target.parentNode;
     listItem.parentNode.removeChild(listItem);
-
+    
     // focus back on text box
     listTextInput.focus();
     }
